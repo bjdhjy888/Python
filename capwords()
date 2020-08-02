@@ -1,0 +1,5 @@
+import string
+
+s = 'I like Python, as its library is cool and useful.'
+print(s)
+print(string.capwords(s))
