@@ -1,5 +1,11 @@
+# 导入string模块
 import string
 
-s = 'I like Python, as its library is cool and useful.'
-print(s)
-print(string.capwords(s))
+# 创建一个变量，变量名称是myString,myString的值是句子I like...
+myString = 'I like Python, as its library is cool and useful.'
+
+# 打印myString的值
+print(myString)
+
+# 调用函数capwords()，打印myString的值
+print(string.capwords(myString))
