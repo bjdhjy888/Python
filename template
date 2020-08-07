@@ -1,14 +1,14 @@
 from string import Template
 
-print ("Hello, Python!")
+myString = Template('$who likes $what')
+print(myString.substitute(who='Bob', what='KFC'))
 
-s1 = Template('$who likes $what')
-print(s1.substitute(who='tim', what='kung pao'))
+# {}中是替换的内容
+myString = Template('${who}likes $what')
+print(myString.substitute(who='Bob', what='KFC'))
 
-s2 = Template('${who}likes $what')
-print(s2.substitute(who='tim', what='kung pao'))
-
-s3 = Template('$$who likes $what')
-print(s3.substitute(who='tim', what='kung pao'))
+# $Who是替换的内容
+myString = Template('$$Who likes $what')
+print(myString.substitute(who='Bob', what='KFC'))
 
  
