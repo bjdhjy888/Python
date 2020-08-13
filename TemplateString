@@ -1,0 +1,28 @@
+""" 学习目标：理解和应用模板字符串(Template string)
+定义：string模块提供了Template类
+作用：模板字符串支持基于$的简单易用的字符串替换
+用例：翻译，格式简单易用，比其他功能翻译更简单方便
+参考：https://docs.python.org/3/library/string.html#module-string """
+
+# 从字符串模块中导入Template类
+from string import Template
+
+myString = Template('$who likes $what')
+# substitute()是Template的方法
+print(myString.substitute(who='Bob', what='KFC.'))
+
+# 单引号和双引号的作用相同;大小写敏感；下划线开头；
+myString = Template("$_Who likes $what")
+print(myString.substitute(_Who='Bob', what="KFC."))
+
+myString = Template('$save$As')
+print(myString.substitute(save='另存', As='为'))
+print(myString.substitute(save='另存', As='為'))
+
+# "${标识符}"和"标识符"的作用相同；用在标识符are not part of the placeholder
+myString = Template('I enjoy ${action1}ing and $action2')
+print(myString.substitute(action1='eat', action2='drinking.'))
+
+# $$的作用是跳出，被$替换
+myString = Template('This template string has no substitution, even though it contains $$etc')
+print(myString.substitute(who4='Bob'))
