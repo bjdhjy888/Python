@@ -1,28 +1,28 @@
 # 学习目标：理解和应用模板字符串(Template string)
-# 定义：string模块提供了Template类
-# 作用：模板字符串支持基于$的简单易用的字符串替换
-# 用例：翻译，格式简单易用，比其他功能翻译更简单方便
+# 定义：无需修改软件即可实现数据的变更
+# 作用：模板字符串支持基于$的简单易用的字符串替换；在名字前加前缀$标识变量
+# 用例：翻译，格式简单易用
 # 参考：https://docs.python.org/3/library/string.html#module-string
 
-# 从字符串模块中导入Template类
+# 从字符串模块中导入Template类;注意是模块，不是数据类型；大写字母T
 from string import Template
 
+# myString是一个对象；是Template类的实例化；
 myString = Template('$who likes $what')
 # substitute()是Template的方法
-print(myString.substitute(who='Bob', what='KFC.'))
+print("Now, my string is:", myString.substitute(who='Bob', what='KFC.'))
+
+# 调用safe_substitute方法，可避免未能向模板提供所需的所有参数值时可能产生的异常，不会抛出错误
+print("Now, my string is:", myString.safe_substitute(who='Bob'))
 
 # 单引号和双引号的作用相同;大小写敏感；下划线开头；
 myString = Template("$_Who likes $what")
-print(myString.substitute(_Who='Bob', what="KFC."))
+print("Now, my string is:", myString.substitute(_Who='Bob', what="KFC."))
 
-myString = Template('$save$As')
-print(myString.substitute(save='另存', As='为'))
-print(myString.substitute(save='另存', As='為'))
-
-# ${标识符}和$标识符的作用相同
+# ${标识符}可区分变量和周围的文本
 myString = Template('I enjoy ${action1}ing and $action2')
-print(myString.substitute(action1='eat', action2='drinking.'))
+print("Now, my string is:", myString.substitute(action1='eat', action2='drinking.'))
 
 # $$的作用是跳出，被$替换
 myString = Template('This template string has no substitution, even though it contains $$guess.')
-print(myString.substitute(guess='Bob'))
+print("Now, my string is:", myString.substitute(guess='Bob'))
